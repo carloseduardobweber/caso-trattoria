@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Caso Trattoria Bela Serra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0C4448;--teal-claro:#145a5f;--teal-leve:#e7f1ef;--texto:#1f2d2e;--suave:#6a787a;--borda:#e8eded;--fundo:#f7f9f9;--branco:#fff;
+--verde:#2f7d57;--verde-leve:#e5f3eb;--vermelho:#b3261e;--vermelho-leve:#fbe9e7;--ambar:#9a6700;--ambar-leve:#fff4d6;--laranja:#e07b39;
+--num:'IBM Plex Sans Condensed','Quicksand',system-ui,sans-serif;--fonte:'Quicksand',system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--fonte);color:var(--texto);background:var(--fundo);font-size:15px;line-height:1.5}
+.num,td.n,.kpi .v{font-family:var(--num);font-variant-numeric:tabular-nums}
+header{background:var(--branco);border-bottom:2px solid var(--teal)}
+.topo{max-width:1120px;margin:0 auto;padding:14px 16px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.topo svg{height:40px;width:auto}
+.topo .cli{text-align:right;line-height:1.25}
+.topo .cli b{display:block;color:var(--teal);font-size:17px}
+.topo .cli span{color:var(--suave);font-size:13px}
+nav{max-width:1120px;margin:0 auto;padding:10px 16px 0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav button{font:inherit;font-weight:600;font-size:14px;color:var(--suave);background:none;border:0;padding:10px 14px;border-radius:10px 10px 0 0;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent}
+nav button[aria-selected=true]{color:var(--teal);border-bottom-color:var(--teal);background:var(--teal-leve)}
+main{max-width:1120px;margin:0 auto;padding:22px 16px 60px}
+section[hidden]{display:none}
+h1{font-size:26px;color:var(--teal);margin:0 0 4px;line-height:1.2}
+h2{font-size:18px;color:var(--teal);margin:26px 0 10px}
+.sub{color:var(--suave);margin:0 0 18px}
+.card{background:var(--branco);border:1px solid var(--borda);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.kpi{background:var(--branco);border:1px solid var(--borda);border-radius:14px;padding:12px 16px}
+.kpi .r{font-size:13px;color:var(--suave)}
+.kpi .v{font-size:26px;font-weight:700;color:var(--teal);line-height:1.2}
+.kpi .d{font-size:13px;color:var(--suave)}
+.kpi .d.mal{color:var(--vermelho)} .kpi .d.bem{color:var(--verde)}
+.tabela{overflow-x:auto;background:var(--branco);border:1px solid var(--borda);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{background:var(--teal);color:#fff;font-weight:600;text-align:right;padding:8px 10px;white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:6px 10px;border-bottom:1px solid var(--borda);text-align:right;white-space:nowrap}
+td:first-child{text-align:left}
+.fixa th:first-child,.fixa td:first-child{position:sticky;left:0;z-index:1}
+.fixa td:first-child{background:var(--branco)}
+tr.g td{background:var(--teal-leve);font-weight:700;color:var(--teal)}
+tr.g td:first-child{background:var(--teal-leve)}
+tr.f td:first-child{padding-left:24px;color:var(--suave)}
+tr.r td{font-weight:700;background:var(--fundo)}
+tr.r td:first-child{background:var(--fundo)}
+tr.t td{font-weight:700;background:var(--teal);color:#fff}
+tr.t td:first-child{background:var(--teal)}
+.neg{color:var(--vermelho)}
+tr.t .neg{color:#ffd2cc}
+.grafico{background:var(--branco);border:1px solid var(--borda);border-radius:14px;padding:14px 12px 8px;margin-bottom:14px}
+.grafico .tit{font-weight:700;color:var(--teal);margin:0 4px 6px}
+.grafico svg{width:100%;height:auto;display:block}
+.leg{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--suave);margin:4px 4px 0}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tarefa ol{margin:6px 0 8px;padding-left:22px}
+.tarefa li{margin-bottom:4px}
+.msg{border-left:4px solid var(--teal);background:var(--teal-leve);border-radius:0 14px 14px 0;padding:14px 18px;margin:0 0 14px}
+.msg .quem{font-size:13px;font-weight:700;color:var(--teal-claro);margin-bottom:6px}
+.msg p{margin:0 0 8px}
+.tempo td:first-child{font-weight:700;color:var(--teal);width:120px}
+.tempo td{white-space:normal;text-align:left}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px}
+.pill.ok{background:var(--verde-leve);color:var(--verde)}
+.pill.mal{background:var(--vermelho-leve);color:var(--vermelho)}
+.pill.at{background:var(--ambar-leve);color:var(--ambar)}
+.dica{font-size:13px;color:var(--suave);margin:8px 2px 0}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.duas{grid-template-columns:1fr}h1{font-size:22px}.kpi .v{font-size:22px}.topo svg{height:32px}}
+/* ===== Aviso em janela: mesmo visual da festa/novidades do Zelo Tarefas (.zfesta/.znovi) ===== */
+.zfesta{position:fixed;inset:0;z-index:4000;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:20px;
+background:radial-gradient(120% 90% at 50% 28%,rgba(12,68,72,.42),rgba(8,50,47,.66));animation:zfestaFundo .3s ease;
+--acc:#E9A21C;--acc2:#ffe6a6;--acc-txt:#9a6a12;--acc-soft:#fdf1cf;--acc-ring:rgba(233,162,28,.30)}
+.zfesta[hidden]{display:none}
+.zfesta__box{position:relative;z-index:2;box-sizing:border-box;width:min(460px,94vw);padding:62px 26px 22px;text-align:left;
+background:#fffdf4;border:1px solid #e7d9a8;border-radius:20px;box-shadow:0 24px 60px rgba(8,50,47,.40)}
+.zfesta__box.is-pop{animation:zfestaPop .5s cubic-bezier(.34,1.56,.64,1)}
+.zfesta__badge{position:absolute;top:-44px;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;overflow:hidden;
+display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 38%,#fff,var(--acc2) 60%,var(--acc));
+border:4px solid #fffdf4;box-shadow:0 8px 22px rgba(8,50,47,.28),0 0 0 4px var(--acc-ring);animation:zfestaGlow 2.4s ease-in-out infinite}
+.zfesta__badge::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.85),transparent);
+transform:skewX(-18deg);animation:zfestaShine 2.6s ease-in-out infinite}
+.zfesta__selo{position:relative;z-index:1;font-size:46px;line-height:1;filter:drop-shadow(0 2px 3px rgba(8,50,47,.25))}
+.zfesta__rays{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
+.zfesta__rays::before{content:"";position:absolute;top:50%;left:50%;width:130vmax;height:130vmax;transform:translate(-50%,-50%);opacity:.16;
+background:repeating-conic-gradient(from 0deg at 50% 50%,var(--acc) 0deg 9deg,transparent 9deg 18deg);
+-webkit-mask-image:radial-gradient(circle,#000 0,transparent 69%);mask-image:radial-gradient(circle,#000 0,transparent 69%);animation:zfestaGira 26s linear infinite}
+.zfesta__kicker{margin:0 0 3px;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-txt);text-align:center}
+.zfesta__tit{margin:0 0 8px;font-size:22px;line-height:1.15;font-weight:800;color:var(--texto);text-align:center}
+.zfesta__txt{margin:0 auto 14px;font-size:14px;line-height:1.5;color:var(--suave);text-align:center}
+.znovi__itens{margin:4px 0 16px;padding:2px 14px 12px;list-style:none;border:1px solid #e7d9a8;border-radius:12px;background:#fff}
+.znovi__item{padding:9px 0 0}
+.znovi__item+.znovi__item{border-top:1px dashed var(--borda);margin-top:9px}
+.znovi__item-tit{display:flex;gap:8px;align-items:baseline;font-weight:700;font-size:14px}
+.znovi__item-res{margin:2px 0 0 26px;font-size:13px;color:var(--suave);line-height:1.45}
+.znovi__acts{display:flex;justify-content:center}
+.zbtn{font:inherit;font-weight:700;font-size:14px;border:0;border-radius:999px;padding:11px 26px;min-width:190px;cursor:pointer;background:var(--teal);color:#fff}
+.zbtn:hover{background:var(--teal-claro)}
+.zbtn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+@keyframes zfestaFundo{from{opacity:0}to{opacity:1}}
+@keyframes zfestaPop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes zfestaGira{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes zfestaGlow{0%,100%{box-shadow:0 8px 22px rgba(8,50,47,.28),0 0 0 4px var(--acc-ring)}50%{box-shadow:0 8px 30px rgba(8,50,47,.32),0 0 0 10px var(--acc-ring)}}
+@keyframes zfestaShine{0%{transform:translateX(0) skewX(-18deg)}55%,100%{transform:translateX(422%) skewX(-18deg)}}
+@media (prefers-reduced-motion:reduce){.zfesta,.zfesta__box.is-pop,.zfesta__badge,.zfesta__rays::before{animation:none}.zfesta__badge::after{display:none}}
+@media (max-height:720px){.zfesta{align-items:flex-start;overflow-y:auto}.zfesta__box{margin:52px auto 20px;max-height:none}}
+body.travado{overflow:hidden}
+.opcoes{display:flex;justify-content:flex-end;margin:0 0 8px}
+.chave{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--teal);cursor:pointer;user-select:none}
+.chave .suave{font-weight:400;color:var(--suave);font-size:13px}
+.chave input{position:absolute;opacity:0;width:1px;height:1px}
+.chave .trilho{position:relative;width:40px;height:22px;border-radius:999px;background:#cfd8d8;transition:background .15s;flex:none}
+.chave .trilho::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
+.chave input:checked+.trilho{background:var(--teal)}
+.chave input:checked+.trilho::after{transform:translateX(18px)}
+.chave input:focus-visible+.trilho{outline:3px solid #E9A21C;outline-offset:2px}
+th.av{background:var(--teal-claro);font-weight:500;font-size:12px}
+td.av{color:var(--suave);font-size:13px;background:rgba(231,241,239,.35)}
+td.av.neg{color:var(--vermelho)}
+tr.t td.av{color:#d6e6e3;background:var(--teal)}
+@media (max-width:760px){.opcoes{justify-content:flex-start}.chave .suave{display:none}}
+.promo{font-size:11.5px;color:var(--ambar);font-family:var(--fonte);font-weight:600}
+#tCu table{font-size:13.5px}#tCu th,#tCu td{padding-left:8px;padding-right:8px}
+footer{max-width:1120px;margin:0 auto;padding:0 16px 30px;color:var(--suave);font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <div class="topo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266.94 94.59" role="img" aria-label="Zelo Gestão Financeira"><title>Zelo Gestão Financeira</title><path fill="#0C4448" d="M33.81 4.78 C37.5 3.81 41.37 3.29 45.37 3.29 C57.89 3.29 69.24 8.37 77.45 16.58 C85.66 24.79 90.74 36.14 90.74 48.66 C90.74 53.75 89.9 58.65 88.35 63.22 C85.41 69.55 81.55 69.74 76.66 69.99 C72.88 69.99 69.11 69.99 65.33 69.99 C53.87 69.99 42.41 69.99 30.95 69.99 L30.82 69.99 C30.7 69.99 30.52 69.93 30.4 69.99 C30.27 69.93 30.15 69.87 30.03 69.75 L30.03 69.68 C29.48 69.32 29.3 68.58 29.54 67.97 C29.66 67.73 29.78 67.55 29.91 67.42 L56.85 30.39 L35.11 30.39 L35.11 30.41 L14.35 30.41 C8.99 30.45 7.07 30.33 4.85 34.85 C3.37 39.18 2.57 43.83 2.57 48.66 C2.57 60.48 7.36 71.18 15.1 78.93 C22.85 86.67 33.55 91.46 45.37 91.46 C51.4 91.46 57.14 89.85 62.34 87.59 C60.99 87.48 59.18 87.33 59.01 85.93 C59.26 84.53 65.75 86 66.36 86.75 C67.04 87.58 64.47 94.59 63.03 93.47 C62.57 93.12 62.77 92.17 62.93 91.65 C63.06 91.21 63.29 90.76 63.49 90.27 C57.94 92.69 51.81 94.03 45.37 94.03 C32.84 94.03 21.49 88.96 13.29 80.75 C5.08 72.54 0 61.19 0 48.66 C0 43.21 0.96 37.99 2.72 33.15 C4.94 29.04 6.11 27.44 14.42 27.46 L30.95 27.46 L35.11 27.46 L59.36 27.46 C59.79 27.34 60.21 27.46 60.58 27.7 C60.7 27.77 60.89 27.89 61.01 28.01 C61.44 28.5 61.44 29.29 61.01 29.84 L33.82 67 C44.42 67 55.02 67 65.62 67 C69.38 67 73.14 66.99 76.9 66.99 C81.68 66.65 83.62 66.01 86.14 61.7 C87.46 57.59 88.17 53.21 88.17 48.66 C88.17 36.85 83.37 26.14 75.63 18.4 C67.89 10.66 57.19 5.87 45.37 5.87 C41.59 5.87 37.93 6.35 34.44 7.27 C35.9 7.74 38.56 8.57 37.42 9.68 C36.3 10.57 30.63 7.92 30.43 7.02 C30.12 5.75 34.09 0 35.24 1.42 C35.6 1.87 35.19 2.75 34.91 3.22 C34.63 3.71 34.19 4.21 33.81 4.78"/><path fill="#0C4448" d="M117.47 55.5 C117.59 55.63 117.72 55.69 117.84 55.75 C117.96 55.69 118.14 55.75 118.27 55.75 L118.39 55.75 L147.29 55.75 C148.09 55.75 148.76 55.08 148.76 54.28 C148.76 53.36 148.07 52.75 147.29 52.75 L121.26 52.75 L148.45 15.6 C148.88 15.05 148.88 14.26 148.45 13.77 C148.33 13.65 148.15 13.52 148.03 13.46 C147.66 13.22 147.23 13.1 146.8 13.22 L118.39 13.22 C117.61 13.22 116.92 13.89 116.92 14.68 C116.92 15.48 117.59 16.15 118.39 16.15 L144.3 16.15 L117.35 53.18 C117.23 53.3 117.11 53.49 116.98 53.73 C116.74 54.34 116.92 55.08 117.47 55.44 Z Z M159.51 54.28 C159.51 55.05 160.12 55.69 160.86 55.75 L160.98 55.75 L161.16 55.75 L182.98 55.75 C183.83 55.75 184.44 55.08 184.44 54.28 C184.44 53.43 183.82 52.75 182.98 52.75 L162.51 52.75 L162.51 35.89 L180.41 35.89 C181.21 35.89 181.88 35.22 181.88 34.42 C181.88 33.57 181.19 32.89 180.41 32.89 L162.51 32.89 L162.51 15.97 L182.98 15.97 C183.83 15.97 184.44 15.3 184.44 14.44 C184.44 13.65 183.82 12.97 182.98 12.97 L161.1 12.97 L160.98 12.97 C160.2 12.97 159.51 13.66 159.51 14.44 Z Z M219.21 55.75 C220.07 55.75 220.74 55.08 220.74 54.28 C220.74 53.43 220.06 52.75 219.21 52.75 L198.74 52.75 L198.74 14.44 C198.74 13.65 198.07 12.97 197.21 12.97 C196.42 12.97 195.75 13.66 195.75 14.44 L195.75 54.28 C195.75 55.06 196.42 55.75 197.21 55.75 L197.34 55.75 Z Z M225.81 34.05 L225.81 34.05 C225.87 46.03 234.92 55.75 246.47 55.75 L246.47 55.75 C257.89 55.75 266.88 46.03 266.94 34.05 L266.94 34.05 C266.88 22.08 257.89 12.36 246.47 12.36 L246.47 12.36 C234.92 12.36 225.87 22.08 225.81 34.05 Z M228.81 34.05 L228.81 34.05 C228.81 23.48 236.75 15.42 246.47 15.42 L246.47 15.42 C255.88 15.42 263.82 23.48 263.88 34.05 L263.88 34.05 C263.82 44.5 255.88 52.75 246.47 52.75 L246.47 52.75 C236.75 52.75 228.81 44.5 228.81 34.05"/><path fill="#0C4448" d="M125.06 70.57 C125.06 70.34 124.86 70.14 124.65 70.14 C124.4 70.14 124.2 70.34 124.2 70.57 L124.2 70.57 L124.2 71.85 C123.48 70.82 122.29 70.14 120.96 70.14 C118.69 70.14 116.88 72.11 116.88 74.46 C116.88 76.85 118.69 78.78 120.96 78.78 C122.29 78.78 123.48 78.13 124.2 77.08 L124.2 78.15 C124.2 79.94 122.77 81.38 120.96 81.38 C120.42 81.38 119.98 81.27 119.54 81.06 C119.32 80.93 119.08 81.02 118.97 81.25 C118.86 81.45 118.97 81.7 119.15 81.82 C119.72 82.07 120.32 82.23 120.96 82.23 C123.23 82.23 125.06 80.4 125.06 78.15 Z Z M120.96 77.95 C119.18 77.95 117.73 76.41 117.73 74.46 C117.73 72.52 119.18 71 120.96 71 C122.75 71 124.2 72.52 124.2 74.46 C124.2 76.41 122.75 77.95 120.96 77.95 Z M132.77 78.84 C134.25 78.84 135.54 78.06 136.29 76.87 C136.41 76.66 136.34 76.41 136.15 76.27 C135.97 76.16 135.7 76.19 135.58 76.41 C134.99 77.38 133.93 77.99 132.77 77.99 C130.98 77.99 129.49 76.55 129.4 74.65 L136.54 74.65 C136.77 74.65 136.96 74.49 136.96 74.26 L136.96 74.21 L136.96 74.19 C136.78 71.92 135.01 70.14 132.77 70.14 C130.43 70.14 128.55 72.1 128.55 74.51 C128.55 76.89 130.43 78.84 132.77 78.84 Z M132.77 71 C134.37 71 135.76 72.19 136.04 73.82 L129.46 73.82 C129.78 72.17 131.14 71 132.77 71 Z M139.43 77.6 L139.43 77.6 C140.14 78.16 141.24 78.82 142.64 78.84 L142.64 78.84 C143.49 78.84 144.2 78.59 144.81 78.15 L144.81 78.15 C145.39 77.7 145.8 77.12 145.8 76.39 L145.8 76.39 C145.8 75.66 145.39 74.99 144.82 74.62 L144.82 74.62 C144.22 74.28 143.55 74.03 142.71 73.91 L142.68 73.91 L142.68 73.91 C141.88 73.78 141.29 73.57 140.9 73.3 L140.9 73.3 C140.56 73.04 140.4 72.79 140.4 72.43 L140.4 72.43 C140.4 72.08 140.6 71.72 140.95 71.44 L140.95 71.44 C141.33 71.14 141.89 70.94 142.6 70.94 L142.6 70.94 C143.46 70.94 144.09 71.39 144.73 71.81 L144.73 71.81 C144.93 71.94 145.2 71.88 145.32 71.69 L145.32 71.69 C145.44 71.49 145.39 71.23 145.2 71.08 L145.2 71.08 C144.52 70.66 143.72 70.14 142.6 70.14 L142.6 70.14 C141.72 70.14 140.99 70.37 140.48 70.73 L140.48 70.73 C139.93 71.14 139.53 71.74 139.53 72.43 L139.53 72.43 C139.53 73.11 139.93 73.68 140.48 73.99 L140.48 73.99 C140.97 74.35 141.66 74.53 142.44 74.67 L142.48 74.69 L142.48 74.69 C143.33 74.83 143.95 75.04 144.33 75.33 L144.33 75.33 C144.77 75.7 144.93 75.98 144.95 76.39 L144.95 76.39 C144.95 76.78 144.72 77.17 144.29 77.45 L144.29 77.45 C143.9 77.77 143.31 77.99 142.64 77.99 L142.64 77.99 C141.54 77.99 140.58 77.42 139.98 76.98 L139.98 76.98 C139.78 76.82 139.52 76.85 139.38 77.03 L139.38 77.03 C139.23 77.21 139.25 77.44 139.43 77.6 Z M151.58 70.14 L150.46 70.14 L150.46 66.91 C150.46 66.7 150.23 66.49 150 66.49 C149.79 66.49 149.58 66.7 149.58 66.91 L149.58 70.14 L148.5 70.14 C148.07 70.14 148.07 70.36 148.07 70.57 C148.07 70.78 148.07 71 148.5 71 L149.58 71 L149.58 77.33 C149.58 78.2 150.23 78.84 151.1 78.84 C151.32 78.84 151.55 78.63 151.55 78.41 C151.55 78.2 151.32 77.97 151.1 77.97 C150.89 77.97 150.46 77.76 150.46 77.33 L150.46 71 L151.58 71 C151.8 71 152.01 70.78 152.01 70.57 C152.01 70.36 151.8 70.14 151.58 70.14 Z M163.35 70.14 C163.12 70.14 162.92 70.32 162.92 70.57 L162.92 71.85 C162.18 70.82 160.99 70.14 159.66 70.14 C157.37 70.14 155.54 72.11 155.54 74.49 C155.54 76.87 157.37 78.84 159.66 78.84 C160.99 78.84 162.18 78.15 162.92 77.12 L162.92 78.41 C162.92 78.64 163.12 78.84 163.35 78.84 C163.58 78.84 163.77 78.64 163.77 78.41 L163.77 70.57 C163.77 70.32 163.58 70.14 163.35 70.14 Z M159.66 77.99 C157.88 77.99 156.39 76.44 156.39 74.49 C156.39 72.54 157.88 70.98 159.66 70.98 C161.45 70.98 162.92 72.54 162.92 74.49 C162.92 76.44 161.45 77.99 159.66 77.99 Z M157.72 68.48 C157.93 68 158.13 67.8 158.52 67.8 C159.12 67.8 160.12 68.53 160.79 68.53 C161.43 68.53 161.86 68.23 162.19 67.2 C162.21 67.14 162.23 67.04 162.23 66.99 C162.23 66.81 162.09 66.68 161.91 66.68 C161.75 66.68 161.64 66.83 161.59 66.93 C161.38 67.41 161.18 67.61 160.79 67.61 C160.19 67.61 159.19 66.88 158.52 66.88 C157.88 66.88 157.46 67.18 157.12 68.21 C157.1 68.26 157.08 68.37 157.08 68.42 C157.08 68.6 157.22 68.72 157.4 68.72 C157.58 68.72 157.67 68.58 157.72 68.48 Z M165.85 74.49 L165.85 74.49 C165.85 76.85 167.69 78.84 169.97 78.84 L169.97 78.84 C172.25 78.84 174.08 76.85 174.08 74.49 L174.08 74.49 C174.08 72.13 172.25 70.14 169.97 70.14 L169.97 70.14 C167.69 70.14 165.85 72.13 165.85 74.49 Z M166.7 74.49 L166.7 74.49 C166.7 72.56 168.19 70.98 169.97 70.98 L169.97 70.98 C171.74 70.98 173.23 72.56 173.23 74.49 L173.23 74.49 C173.23 76.43 171.74 77.99 169.97 77.99 L169.97 77.99 C168.19 77.99 166.7 76.43 166.7 74.49 Z M186.08 66.42 C185.39 66.42 184.75 66.58 184.32 67.04 C183.91 67.52 183.77 68.18 183.75 69.07 L183.75 70 L182.6 70 C182.37 70 182.17 70.2 182.17 70.43 C182.17 70.68 182.37 70.87 182.6 70.87 L183.75 70.87 L183.75 78.41 C183.75 78.64 183.95 78.84 184.2 78.84 C184.43 78.84 184.62 78.64 184.62 78.41 L184.62 70.87 L185.85 70.87 C186.09 70.87 186.29 70.68 186.29 70.43 C186.29 70.2 186.09 70 185.85 70 L184.62 70 L184.62 69.07 C184.62 68.27 184.78 67.84 184.98 67.62 C185.15 67.41 185.47 67.29 186.08 67.29 C186.31 67.29 186.5 67.09 186.5 66.86 C186.5 66.61 186.31 66.42 186.08 66.42 Z M189.11 78.41 L189.11 78.41 C189.11 78.64 189.31 78.84 189.54 78.84 L189.54 78.84 C189.79 78.84 189.98 78.64 189.98 78.41 L189.98 70.57 L189.98 70.57 C189.98 70.32 189.79 70.14 189.54 70.14 L189.54 70.14 C189.31 70.14 189.11 70.32 189.11 70.57 Z Z M189.11 68.14 L189.11 68.14 C189.11 68.39 189.31 68.6 189.54 68.6 L189.54 68.6 C189.79 68.6 189.98 68.39 189.98 68.14 L189.98 67.73 L189.98 67.73 C189.98 67.5 189.79 67.3 189.54 67.3 L189.54 67.3 C189.31 67.3 189.11 67.5 189.11 67.73 Z Z M200.29 78.41 C200.29 78.66 200.49 78.84 200.72 78.84 C200.95 78.84 201.14 78.66 201.14 78.41 L201.14 73.69 C201.14 71.76 199.56 70.16 197.61 70.16 C196.53 70.16 195.55 70.66 194.91 71.42 L194.91 70.59 C194.91 70.36 194.74 70.16 194.51 70.16 C194.26 70.16 194.08 70.36 194.08 70.59 L194.08 73.55 L194.08 73.69 L194.08 78.41 L194.08 78.52 C194.08 78.52 194.1 78.54 194.1 78.55 C194.1 78.57 194.1 78.59 194.12 78.61 C194.17 78.71 194.28 78.8 194.4 78.84 L194.51 78.84 C194.63 78.84 194.75 78.78 194.83 78.68 C194.88 78.63 194.9 78.55 194.91 78.48 L194.91 78.41 L194.91 73.69 C194.95 72.22 196.14 71.01 197.61 71.01 C199.1 71.01 200.29 72.22 200.29 73.69 Z Z M211.82 70.14 C211.59 70.14 211.4 70.32 211.4 70.57 L211.4 71.85 C210.65 70.82 209.46 70.14 208.13 70.14 C205.84 70.14 204.02 72.11 204.02 74.49 C204.02 76.87 205.84 78.84 208.13 78.84 C209.46 78.84 210.65 78.15 211.4 77.12 L211.4 78.41 C211.4 78.64 211.59 78.84 211.82 78.84 C212.05 78.84 212.25 78.64 212.25 78.41 L212.25 70.57 C212.25 70.32 212.05 70.14 211.82 70.14 Z M208.13 77.99 C206.36 77.99 204.87 76.44 204.87 74.49 C204.87 72.54 206.36 70.98 208.13 70.98 C209.93 70.98 211.4 72.54 211.4 74.49 C211.4 76.44 209.93 77.99 208.13 77.99 Z M221.97 78.41 C221.97 78.66 222.17 78.84 222.4 78.84 C222.63 78.84 222.83 78.66 222.83 78.41 L222.83 73.69 C222.83 71.76 221.25 70.16 219.29 70.16 C218.21 70.16 217.24 70.66 216.6 71.42 L216.6 70.59 C216.6 70.36 216.42 70.16 216.19 70.16 C215.94 70.16 215.76 70.36 215.76 70.59 L215.76 73.55 L215.76 73.69 L215.76 78.41 L215.76 78.52 C215.76 78.52 215.78 78.54 215.78 78.55 C215.78 78.57 215.78 78.59 215.8 78.61 C215.85 78.71 215.96 78.8 216.08 78.84 L216.19 78.84 C216.31 78.84 216.44 78.78 216.51 78.68 C216.56 78.63 216.58 78.55 216.6 78.48 L216.6 78.41 L216.6 73.69 C216.63 72.22 217.82 71.01 219.29 71.01 C220.78 71.01 221.97 72.22 221.97 73.69 Z Z M230.49 78.84 L230.49 78.84 C230.49 78.84 230.49 78.84 230.49 78.84 L230.49 78.84 C231.52 78.84 232.5 78.48 233.22 77.92 L233.22 77.92 C233.44 77.76 233.47 77.49 233.31 77.29 L233.31 77.29 C233.17 77.13 232.92 77.08 232.73 77.22 L232.73 77.22 L232.73 77.22 C232.1 77.7 231.32 77.99 230.49 77.99 L230.49 77.99 C228.47 77.99 226.87 76.43 226.87 74.47 L226.87 74.47 C226.87 72.56 228.47 70.98 230.49 70.98 L230.49 70.98 C231.32 70.98 232.1 71.26 232.73 71.76 L232.73 71.76 C232.92 71.9 233.17 71.85 233.31 71.69 L233.31 71.69 C233.47 71.49 233.44 71.23 233.26 71.1 L233.26 71.1 C232.5 70.5 231.52 70.14 230.49 70.14 L230.49 70.14 C228.01 70.14 226.02 72.06 226.02 74.47 L226.02 74.47 C226.02 76.92 228.01 78.84 230.49 78.84 Z M240.11 78.84 C241.58 78.84 242.88 78.06 243.62 76.87 C243.74 76.66 243.67 76.41 243.48 76.27 C243.3 76.16 243.03 76.19 242.91 76.41 C242.33 77.38 241.26 77.99 240.11 77.99 C238.32 77.99 236.82 76.55 236.74 74.65 L243.87 74.65 C244.1 74.65 244.3 74.49 244.3 74.26 L244.3 74.21 L244.3 74.19 C244.12 71.92 242.34 70.14 240.11 70.14 C237.76 70.14 235.88 72.1 235.88 74.51 C235.88 76.89 237.76 78.84 240.11 78.84 Z M240.11 71 C241.7 71 243.09 72.19 243.37 73.82 L236.79 73.82 C237.11 72.17 238.48 71 240.11 71 Z M247.33 78.41 L247.33 78.41 C247.33 78.64 247.53 78.84 247.76 78.84 L247.76 78.84 C248 78.84 248.2 78.64 248.2 78.41 L248.2 70.57 L248.2 70.57 C248.2 70.32 248 70.14 247.76 70.14 L247.76 70.14 C247.53 70.14 247.33 70.32 247.33 70.57 Z Z M247.33 68.14 L247.33 68.14 C247.33 68.39 247.53 68.6 247.76 68.6 L247.76 68.6 C248 68.6 248.2 68.39 248.2 68.14 L248.2 67.73 L248.2 67.73 C248.2 67.5 248 67.3 247.76 67.3 L247.76 67.3 C247.53 67.3 247.33 67.5 247.33 67.73 Z Z M252.3 78.41 C252.3 78.66 252.49 78.84 252.74 78.84 C252.96 78.84 253.15 78.66 253.15 78.41 L253.15 74.6 C253.15 74.56 253.15 74.53 253.19 74.46 C253.31 74.1 253.65 73.21 254.23 72.43 C254.84 71.65 255.62 71.01 256.75 71.01 C256.98 71.01 257.18 70.82 257.18 70.59 C257.18 70.34 256.98 70.16 256.75 70.16 C255.08 70.16 253.93 71.26 253.27 72.29 C253.22 72.36 253.19 72.43 253.15 72.5 L253.15 70.59 C253.15 70.34 252.96 70.16 252.74 70.16 C252.49 70.16 252.3 70.34 252.3 70.59 Z Z M266.51 70.14 C266.28 70.14 266.09 70.32 266.09 70.57 L266.09 71.85 C265.34 70.82 264.15 70.14 262.82 70.14 C260.53 70.14 258.7 72.11 258.7 74.49 C258.7 76.87 260.53 78.84 262.82 78.84 C264.15 78.84 265.34 78.15 266.09 77.12 L266.09 78.41 C266.09 78.64 266.28 78.84 266.51 78.84 C266.74 78.84 266.94 78.64 266.94 78.41 L266.94 70.57 C266.94 70.32 266.74 70.14 266.51 70.14 Z M262.82 77.99 C261.05 77.99 259.56 76.44 259.56 74.49 C259.56 72.54 261.05 70.98 262.82 70.98 C264.61 70.98 266.09 72.54 266.09 74.49 C266.09 76.44 264.61 77.99 262.82 77.99"/></svg>
+
+    <div class="cli"><b>Trattoria Bela Serra</b><span>empresa fictícia · dados de set/25 a ago/26</span></div>
+  </div>
+  <nav role="tablist">
+    <button role="tab" data-t="inicio" aria-selected="true">Início</button>
+    <button role="tab" data-t="resultado">Resultado (DRE)</button>
+    <button role="tab" data-t="caixa">Fluxo de caixa</button>
+    <button role="tab" data-t="orcado">Orçado × realizado</button>
+    <button role="tab" data-t="custeio">Custeio</button>
+  </nav>
+</header>
+
+<main>
+<!-- ============ INÍCIO ============ -->
+<section id="inicio">
+  <h1>Caso prático: reunião de fechamento</h1>
+  <p class="sub">Processo seletivo para analista financeiro da Zelo Gestão Financeira</p>
+
+  <div class="card tarefa">
+    <p><b>Sua tarefa.</b> Você é o analista da Zelo que acabou de assumir este cliente. Na próxima reunião de fechamento,
+    de 20 minutos, você vai apresentar aos donos, Marco e Júlia, como está a empresa. Eles não são da área financeira.
+    Use as abas desta página; pode também preparar slides ou anotações.</p>
+    <p>Na reunião, queremos ouvir de você:</p>
+    <ol>
+      <li>Por que o restaurante vende mais e sobra menos.</li>
+      <li>O que o delivery trouxe de verdade para a empresa.</li>
+      <li>O que as fichas técnicas e os preços mostram sobre o cardápio.</li>
+      <li>Três recomendações, em ordem de prioridade.</li>
+      <li>O que você perguntaria aos donos para completar a análise.</li>
+    </ol>
+    <p>Não é preciso saber tudo. Se algo não estiver claro, diga o que faria para descobrir.</p>
+  </div>
+
+  <h2>O cliente</h2>
+  <p><b>Trattoria Bela Serra.</b> Cantina italiana de 70 lugares, com 6 anos de casa, no Simples Nacional.
+  Marco cuida da cozinha; Júlia, do salão e da administração.</p>
+
+  <div class="msg">
+    <div class="quem">Mensagem da Júlia para a Zelo</div>
+    <p>Oi! Queria muito entender uma coisa antes da nossa reunião. No ano passado a gente abriu o delivery, reformou
+    o salão e contratou mais gente na cozinha. O movimento nunca foi tão grande: o iFood não para e o salão continua
+    cheio. Só que no fim do mês sobra cada vez menos, e a reserva que a gente tinha no banco está indo embora.</p>
+    <p>O Marco acha que é o preço do queijo, que subiu muito. Eu acho que é o iFood. Vocês conseguem me dizer o que
+    está acontecendo e o que a gente deveria fazer?</p>
+  </div>
+
+  <h2>O que aconteceu no último ano</h2>
+  <div class="tabela"><table class="tempo"><tbody>
+    <tr><td>até nov/25</td><td>Só salão. A casa dava um lucro de uns 10% do faturamento, e os sócios retiravam 12 mil por mês além do pró-labore.</td></tr>
+    <tr><td>nov e dez/25</td><td>Empréstimo de R$ 150 mil em 24 parcelas para reformar o salão, que ficou 10 dias fechado em dezembro.</td></tr>
+    <tr><td>dez/25</td><td>Abriram o delivery pelo iFood, no plano em que o iFood faz a entrega. O cardápio foi para o aplicativo com os mesmos preços do salão.</td></tr>
+    <tr><td>desde fev/26</td><td>Para subir no ranking do iFood, a lasanha e o fettuccine, os pratos mais pedidos, entraram numa promoção de 25% de desconto bancada pela casa. Hoje são uns 40% dos pedidos do delivery.</td></tr>
+    <tr><td>mar/26</td><td>Contrataram um segundo cozinheiro e um auxiliar para dar conta do delivery.</td></tr>
+    <tr><td>jun a ago/26</td><td>O queijo subiu bastante. O cardápio não mudou.</td></tr>
+  </tbody></table></div>
+  <p class="dica">Todos os números desta página são fictícios.</p>
+</section>
+
+<!-- ============ RESULTADO ============ -->
+<section id="resultado" hidden>
+  <h1>Resultado (DRE)</h1>
+  <p class="sub">Regime de competência: a venda e o custo contam no mês em que aconteceram.</p>
+  <div class="kpis" id="kpiDre"></div>
+  <div class="grafico"><div class="tit">Faturamento por canal e lucro líquido, mês a mês</div><div id="gDre"></div>
+    <div class="leg"><span><i style="background:var(--teal)"></i>Salão</span><span><i style="background:var(--laranja)"></i>Delivery</span><span><i style="background:#1f2d2e"></i>Lucro líquido</span></div></div>
+  <div class="opcoes"><label class="chave"><input type="checkbox" id="chaveAv"><span class="trilho"></span>Análise vertical <span class="suave">(% de cada linha sobre a receita bruta do mês)</span></label></div>
+  <div class="tabela fixa" id="tDre"></div>
+</section>
+
+<!-- ============ CAIXA ============ -->
+<section id="caixa" hidden>
+  <h1>Fluxo de caixa</h1>
+  <p class="sub">Regime de caixa: o que entrou e saiu da conta do banco em cada mês.</p>
+  <div class="kpis" id="kpiCx"></div>
+  <div class="grafico"><div class="tit">Saldo no banco no fim de cada mês</div><div id="gCx"></div></div>
+  <div class="tabela fixa" id="tCx"></div>
+  <p class="dica">Cartão de crédito cai em 30 dias; o iFood repassa no mês seguinte, já sem a comissão. Simples, folha e fornecedores são pagos no mês seguinte.</p>
+</section>
+
+<!-- ============ ORÇADO ============ -->
+<section id="orcado" hidden>
+  <h1>Orçado × realizado 2026</h1>
+  <p class="sub">O plano que Marco e Júlia fizeram em dez/25, comparado com o que aconteceu.</p>
+  <div class="grafico"><div class="tit">Delivery: planejado × realizado</div><div id="gOrc"></div>
+    <div class="leg"><span><i style="background:#b9cfcc"></i>Orçado</span><span><i style="background:var(--laranja)"></i>Realizado</span></div></div>
+  <div class="tabela fixa" id="tOrc"></div>
+</section>
+
+<!-- ============ CUSTEIO ============ -->
+<section id="custeio" hidden>
+  <h1>Custeio: preços e margens</h1>
+  <p class="sub">Custo de cada prato pela ficha técnica, com os preços dos insumos de ago/26.</p>
+  <div class="kpis" id="kpiCu"></div>
+  <div class="tabela fixa" id="tCu"></div>
+  <p class="dica">O imposto (Simples 8%) é o mesmo nos dois canais. A taxa de venda muda: no salão é a maquininha de cartão (3%); no delivery, a comissão do iFood no plano em que ele faz a entrega (23%) mais o pagamento online (3,2%). A porção é a mesma; o custo do delivery soma o kit de embalagem (R$ 3,40 nos pratos, R$ 1,20 nas sobremesas).</p>
+  <div class="duas" style="margin-top:14px">
+    <div class="grafico"><div class="tit">Preço dos queijos (R$ por kg)</div><div id="gQj"></div>
+      <div class="leg"><span><i style="background:var(--teal)"></i>Muçarela</span><span><i style="background:var(--laranja)"></i>Parmesão</span></div></div>
+    <div class="card"><div style="font-weight:700;color:var(--teal);margin-bottom:8px">Ficha técnica: Lasanha à bolonhesa</div>
+      <div class="tabela" style="border:0"><table id="tFicha"></table></div></div>
+  </div>
+</section>
+</main>
+<div class="zfesta" id="zAviso" role="dialog" aria-modal="true" aria-labelledby="zAvisoTit" hidden>
+  <div class="zfesta__rays"></div>
+  <div class="zfesta__box is-pop" role="document">
+    <div class="zfesta__badge"><span class="zfesta__selo">🔒</span></div>
+    <p class="zfesta__kicker">Antes de começar</p>
+    <h2 class="zfesta__tit" id="zAvisoTit">Material de uso exclusivo</h2>
+    <p class="zfesta__txt">Esta página faz parte do processo seletivo da Zelo Gestão Financeira.</p>
+    <ul class="znovi__itens">
+      <li class="znovi__item"><div class="znovi__item-tit"><span>🧪</span><span>Dados fictícios</span></div>
+        <p class="znovi__item-res">A Trattoria Bela Serra, as pessoas e todos os números foram inventados para este exercício.</p></li>
+      <li class="znovi__item"><div class="znovi__item-tit"><span>🧭</span><span>Metodologia da Zelo</span></div>
+        <p class="znovi__item-res">A forma de organizar e analisar estes números é know-how e metodologia próprios da Zelo.</p></li>
+      <li class="znovi__item"><div class="znovi__item-tit"><span>🤝</span><span>Não compartilhe</span></div>
+        <p class="znovi__item-res">Use só no seu processo seletivo. Não repasse o link nem imagens desta página a outras pessoas.</p></li>
+    </ul>
+    <div class="znovi__acts"><button type="button" class="zbtn" id="zAvisoOk">Entendi e concordo</button></div>
+  </div>
+</div>
+<footer>Material de avaliação da Zelo Gestão Financeira. Empresa, pessoas e números fictícios.</footer>
+
+<script>
+const D = {"dre": [{"mes": "set/25", "salao": 178000, "delivery": 0, "receita": 178000, "simples": 14240, "cmv": 52790, "embalagem": 0, "ifood": 0, "cartao": 5340, "var": 72370, "mc": 105630, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7007, "marketing": 2000, "outros": 3500, "manutencao": 1716, "fixas": 86223, "ebitda": 19407, "deprec": 0, "juros": 0, "lucro": 19407}, {"mes": "out/25", "salao": 182000, "delivery": 0, "receita": 182000, "simples": 14560, "cmv": 53949, "embalagem": 0, "ifood": 0, "cartao": 5460, "var": 73969, "mc": 108031, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7057, "marketing": 2000, "outros": 3500, "manutencao": 1534, "fixas": 86091, "ebitda": 21940, "deprec": 0, "juros": 0, "lucro": 21940}, {"mes": "nov/25", "salao": 185000, "delivery": 0, "receita": 185000, "simples": 14800, "cmv": 55972, "embalagem": 0, "ifood": 0, "cartao": 5550, "var": 76322, "mc": 108678, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7129, "marketing": 2000, "outros": 3500, "manutencao": 1661, "fixas": 86290, "ebitda": 22388, "deprec": 0, "juros": 0, "lucro": 22388}, {"mes": "dez/25", "salao": 170000, "delivery": 12000, "receita": 182000, "simples": 14560, "cmv": 55234, "embalagem": 600, "ifood": 3144, "cartao": 5100, "var": 78638, "mc": 103362, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7834, "marketing": 4000, "outros": 3500, "manutencao": 1569, "fixas": 88903, "ebitda": 14459, "deprec": 1250, "juros": 0, "lucro": 13209}, {"mes": "jan/26", "salao": 160000, "delivery": 30000, "receita": 190000, "simples": 15200, "cmv": 57130, "embalagem": 1500, "ifood": 7860, "cartao": 4800, "var": 86490, "mc": 103510, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7968, "marketing": 4000, "outros": 3500, "manutencao": 1689, "fixas": 89157, "ebitda": 14353, "deprec": 1250, "juros": 2700, "lucro": 10403}, {"mes": "fev/26", "salao": 158000, "delivery": 38000, "receita": 196000, "simples": 15680, "cmv": 59888, "embalagem": 1900, "ifood": 9956, "cartao": 4740, "var": 92164, "mc": 103836, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7815, "marketing": 4000, "outros": 3500, "manutencao": 1351, "fixas": 88666, "ebitda": 15170, "deprec": 1250, "juros": 2675, "lucro": 11245}, {"mes": "mar/26", "salao": 165000, "delivery": 45000, "receita": 210000, "simples": 16800, "cmv": 64798, "embalagem": 2250, "ifood": 11790, "cartao": 4950, "var": 100588, "mc": 109412, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8195, "marketing": 4000, "outros": 3500, "manutencao": 1800, "fixas": 97495, "ebitda": 11917, "deprec": 1250, "juros": 2650, "lucro": 8017}, {"mes": "abr/26", "salao": 168000, "delivery": 50000, "receita": 218000, "simples": 17440, "cmv": 66218, "embalagem": 2500, "ifood": 13100, "cartao": 5040, "var": 104298, "mc": 113702, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 7898, "marketing": 4000, "outros": 3500, "manutencao": 1534, "fixas": 96932, "ebitda": 16770, "deprec": 1250, "juros": 2625, "lucro": 12895}, {"mes": "mai/26", "salao": 170000, "delivery": 55000, "receita": 225000, "simples": 18000, "cmv": 68260, "embalagem": 2750, "ifood": 14410, "cartao": 5100, "var": 108520, "mc": 116480, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8241, "marketing": 4000, "outros": 3500, "manutencao": 1622, "fixas": 97363, "ebitda": 19117, "deprec": 1250, "juros": 2600, "lucro": 15267}, {"mes": "jun/26", "salao": 165000, "delivery": 58000, "receita": 223000, "simples": 17840, "cmv": 72362, "embalagem": 2900, "ifood": 15196, "cartao": 4950, "var": 113248, "mc": 109752, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8135, "marketing": 4000, "outros": 3500, "manutencao": 1418, "fixas": 97053, "ebitda": 12699, "deprec": 1250, "juros": 2575, "lucro": 8874}, {"mes": "jul/26", "salao": 170000, "delivery": 62000, "receita": 232000, "simples": 18560, "cmv": 77603, "embalagem": 3100, "ifood": 16244, "cartao": 5100, "var": 120607, "mc": 111393, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8055, "marketing": 4000, "outros": 3500, "manutencao": 1499, "fixas": 97054, "ebitda": 14339, "deprec": 1250, "juros": 2550, "lucro": 10539}, {"mes": "ago/26", "salao": 162000, "delivery": 63000, "receita": 225000, "simples": 18000, "cmv": 77130, "embalagem": 3150, "ifood": 16506, "cartao": 4860, "var": 119646, "mc": 105354, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8160, "marketing": 4000, "outros": 3500, "manutencao": 1560, "fixas": 97220, "ebitda": 8134, "deprec": 1250, "juros": 2525, "lucro": 4359}], "caixa": [{"mes": "set/25", "inicial": 60000, "ent_salao": 172660, "ent_ifood": 0, "emprestimo": 0, "saidas": {"fornecedores": 52790, "simples": 14240, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7007, "marketing": 2000, "outros": 5216, "reforma": 0, "parcela": 0, "retirada": 12000}, "total_saidas": 165253, "resultado": 7407, "final": 67407}, {"mes": "out/25", "inicial": 67407, "ent_salao": 174260, "ent_ifood": 0, "emprestimo": 0, "saidas": {"fornecedores": 52790, "simples": 14240, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7057, "marketing": 2000, "outros": 5034, "reforma": 0, "parcela": 0, "retirada": 12000}, "total_saidas": 165121, "resultado": 9139, "final": 76546}, {"mes": "nov/25", "inicial": 76546, "ent_salao": 177740, "ent_ifood": 0, "emprestimo": 150000, "saidas": {"fornecedores": 53949, "simples": 14560, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7129, "marketing": 2000, "outros": 5161, "reforma": 0, "parcela": 0, "retirada": 12000}, "total_saidas": 166799, "resultado": 160941, "final": 237487}, {"mes": "dez/25", "inicial": 237487, "ent_salao": 173450, "ent_ifood": 0, "emprestimo": 0, "saidas": {"fornecedores": 55972, "simples": 14800, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7834, "marketing": 4000, "outros": 5069, "reforma": 150000, "parcela": 0, "retirada": 12000}, "total_saidas": 321675, "resultado": -148225, "final": 89262}, {"mes": "jan/26", "inicial": 89262, "ent_salao": 160900, "ent_ifood": 8856, "emprestimo": 0, "saidas": {"fornecedores": 55834, "simples": 14560, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7968, "marketing": 4000, "outros": 5189, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 179151, "resultado": -9395, "final": 79867}, {"mes": "fev/26", "inicial": 79867, "ent_salao": 154400, "ent_ifood": 22140, "emprestimo": 0, "saidas": {"fornecedores": 58630, "simples": 15200, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 7815, "marketing": 4000, "outros": 4851, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 182096, "resultado": -5556, "final": 74311}, {"mes": "mar/26", "inicial": 74311, "ent_salao": 156060, "ent_ifood": 28044, "emprestimo": 0, "saidas": {"fornecedores": 61788, "simples": 15680, "folha": 42000, "prolabore": 16000, "aluguel": 14000, "energia": 8195, "marketing": 4000, "outros": 5300, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 186563, "resultado": -2459, "final": 71852}, {"mes": "abr/26", "inicial": 71852, "ent_salao": 161250, "ent_ifood": 33210, "emprestimo": 0, "saidas": {"fornecedores": 67048, "simples": 16800, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 7898, "marketing": 4000, "outros": 5034, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 200380, "resultado": -5920, "final": 65932}, {"mes": "mai/26", "inicial": 65932, "ent_salao": 163760, "ent_ifood": 36900, "emprestimo": 0, "saidas": {"fornecedores": 68718, "simples": 17440, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8241, "marketing": 4000, "outros": 5122, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 203121, "resultado": -2461, "final": 63471}, {"mes": "jun/26", "inicial": 63471, "ent_salao": 162900, "ent_ifood": 40590, "emprestimo": 0, "saidas": {"fornecedores": 71010, "simples": 18000, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8135, "marketing": 4000, "outros": 4918, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 205663, "resultado": -2173, "final": 61298}, {"mes": "jul/26", "inicial": 61298, "ent_salao": 162050, "ent_ifood": 42804, "emprestimo": 0, "saidas": {"fornecedores": 75262, "simples": 17840, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8055, "marketing": 4000, "outros": 4999, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 209756, "resultado": -4902, "final": 56396}, {"mes": "ago/26", "inicial": 56396, "ent_salao": 161700, "ent_ifood": 45756, "emprestimo": 0, "saidas": {"fornecedores": 80703, "simples": 18560, "folha": 50000, "prolabore": 16000, "aluguel": 14000, "energia": 8160, "marketing": 4000, "outros": 5060, "reforma": 0, "parcela": 7600, "retirada": 12000}, "total_saidas": 216083, "resultado": -8627, "final": 47769}], "orc": [{"mes": "jan/26", "rec": [205000, 190000], "dlv": [30000, 30000], "cmv": [61500, 57130], "folha": [42000, 42000], "lucro": [19300, 10403]}, {"mes": "fev/26", "rec": [217500, 196000], "dlv": [42500, 38000], "cmv": [65250, 59888], "folha": [42000, 42000], "lucro": [23075, 11245]}, {"mes": "mar/26", "rec": [230000, 210000], "dlv": [55000, 45000], "cmv": [69000, 64798], "folha": [46000, 50000], "lucro": [22850, 8017]}, {"mes": "abr/26", "rec": [242500, 218000], "dlv": [67500, 50000], "cmv": [72750, 66218], "folha": [46000, 50000], "lucro": [26625, 12895]}, {"mes": "mai/26", "rec": [255000, 225000], "dlv": [80000, 55000], "cmv": [76500, 68260], "folha": [46000, 50000], "lucro": [30400, 15267]}, {"mes": "jun/26", "rec": [255000, 223000], "dlv": [80000, 58000], "cmv": [76500, 72362], "folha": [46000, 50000], "lucro": [30425, 8874]}, {"mes": "jul/26", "rec": [255000, 232000], "dlv": [80000, 62000], "cmv": [76500, 77603], "folha": [46000, 50000], "lucro": [30450, 10539]}, {"mes": "ago/26", "rec": [255000, 225000], "dlv": [80000, 63000], "cmv": [76500, 77130], "folha": [46000, 50000], "lucro": [30475, 4359]}], "custeio": [{"prato": "Lasanha à bolonhesa", "canal": "Salão", "cheio": 62, "promo": 0, "preco": 62, "custo": 24.35, "imposto": 4.96, "taxa": 1.86, "taxas": 6.82, "mc": 30.83, "mcp": 0.49725806451612903, "cmvp": 0.392741935483871}, {"prato": "Lasanha à bolonhesa", "canal": "Delivery", "cheio": 62, "promo": 0.25, "preco": 46.5, "custo": 27.75, "imposto": 3.72, "taxa": 12.18, "taxas": 15.9, "mc": 2.85, "mcp": 0.061290322580645165, "cmvp": 0.5967741935483871}, {"prato": "Fettuccine Alfredo", "canal": "Salão", "cheio": 58, "promo": 0, "preco": 58, "custo": 23.75, "imposto": 4.64, "taxa": 1.74, "taxas": 6.38, "mc": 27.87, "mcp": 0.48051724137931034, "cmvp": 0.40948275862068967}, {"prato": "Fettuccine Alfredo", "canal": "Delivery", "cheio": 58, "promo": 0.25, "preco": 43.5, "custo": 27.15, "imposto": 3.48, "taxa": 11.4, "taxas": 14.88, "mc": 1.47, "mcp": 0.03379310344827586, "cmvp": 0.6241379310344827}, {"prato": "Nhoque ao sugo", "canal": "Salão", "cheio": 49, "promo": 0, "preco": 49, "custo": 8.3, "imposto": 3.92, "taxa": 1.47, "taxas": 5.39, "mc": 35.31, "mcp": 0.7206122448979593, "cmvp": 0.16938775510204082}, {"prato": "Nhoque ao sugo", "canal": "Delivery", "cheio": 49, "promo": 0, "preco": 49, "custo": 11.7, "imposto": 3.92, "taxa": 12.84, "taxas": 16.759999999999998, "mc": 20.54, "mcp": 0.41918367346938773, "cmvp": 0.2387755102040816}, {"prato": "Spaghetti à carbonara", "canal": "Salão", "cheio": 56, "promo": 0, "preco": 56, "custo": 11.04, "imposto": 4.48, "taxa": 1.68, "taxas": 6.16, "mc": 38.8, "mcp": 0.6928571428571428, "cmvp": 0.19714285714285712}, {"prato": "Spaghetti à carbonara", "canal": "Delivery", "cheio": 56, "promo": 0, "preco": 56, "custo": 14.44, "imposto": 4.48, "taxa": 14.67, "taxas": 19.15, "mc": 22.41, "mcp": 0.40017857142857144, "cmvp": 0.25785714285714284}, {"prato": "Ravioli de ricota ao sugo", "canal": "Salão", "cheio": 59, "promo": 0, "preco": 59, "custo": 10.63, "imposto": 4.72, "taxa": 1.77, "taxas": 6.49, "mc": 41.88, "mcp": 0.7098305084745763, "cmvp": 0.18016949152542375}, {"prato": "Ravioli de ricota ao sugo", "canal": "Delivery", "cheio": 59, "promo": 0, "preco": 59, "custo": 14.03, "imposto": 4.72, "taxa": 15.46, "taxas": 20.18, "mc": 24.79, "mcp": 0.4201694915254237, "cmvp": 0.23779661016949152}, {"prato": "Penne ao pesto", "canal": "Salão", "cheio": 54, "promo": 0, "preco": 54, "custo": 11.37, "imposto": 4.32, "taxa": 1.62, "taxas": 5.94, "mc": 36.69, "mcp": 0.6794444444444444, "cmvp": 0.21055555555555555}, {"prato": "Penne ao pesto", "canal": "Delivery", "cheio": 54, "promo": 0, "preco": 54, "custo": 14.77, "imposto": 4.32, "taxa": 14.15, "taxas": 18.47, "mc": 20.76, "mcp": 0.3844444444444445, "cmvp": 0.2735185185185185}, {"prato": "Risoto de funghi", "canal": "Salão", "cheio": 69, "promo": 0, "preco": 69, "custo": 15.08, "imposto": 5.52, "taxa": 2.07, "taxas": 7.59, "mc": 46.33, "mcp": 0.6714492753623188, "cmvp": 0.21855072463768116}, {"prato": "Risoto de funghi", "canal": "Delivery", "cheio": 69, "promo": 0, "preco": 69, "custo": 18.48, "imposto": 5.52, "taxa": 18.08, "taxas": 23.599999999999998, "mc": 26.92, "mcp": 0.3901449275362319, "cmvp": 0.26782608695652177}, {"prato": "Parmegiana de frango", "canal": "Salão", "cheio": 64, "promo": 0, "preco": 64, "custo": 14.58, "imposto": 5.12, "taxa": 1.92, "taxas": 7.04, "mc": 42.38, "mcp": 0.6621875, "cmvp": 0.2278125}, {"prato": "Parmegiana de frango", "canal": "Delivery", "cheio": 64, "promo": 0, "preco": 64, "custo": 17.98, "imposto": 5.12, "taxa": 16.77, "taxas": 21.89, "mc": 24.13, "mcp": 0.37703125, "cmvp": 0.2809375}, {"prato": "Tiramisù", "canal": "Salão", "cheio": 26, "promo": 0, "preco": 26, "custo": 7.11, "imposto": 2.08, "taxa": 0.78, "taxas": 2.8600000000000003, "mc": 16.03, "mcp": 0.6165384615384616, "cmvp": 0.2734615384615385}, {"prato": "Tiramisù", "canal": "Delivery", "cheio": 26, "promo": 0, "preco": 26, "custo": 8.31, "imposto": 2.08, "taxa": 6.81, "taxas": 8.89, "mc": 8.8, "mcp": 0.3384615384615385, "cmvp": 0.31961538461538463}, {"prato": "Panna cotta com frutas vermelhas", "canal": "Salão", "cheio": 22, "promo": 0, "preco": 22, "custo": 4.91, "imposto": 1.76, "taxa": 0.66, "taxas": 2.42, "mc": 14.67, "mcp": 0.6668181818181819, "cmvp": 0.22318181818181818}, {"prato": "Panna cotta com frutas vermelhas", "canal": "Delivery", "cheio": 22, "promo": 0, "preco": 22, "custo": 6.11, "imposto": 1.76, "taxa": 5.76, "taxas": 7.52, "mc": 8.37, "mcp": 0.38045454545454543, "cmvp": 0.27772727272727277}], "queijo": {"meses": ["mar", "abr", "mai", "jun", "jul", "ago"], "mucarela": [38, 38, 38, 42, 46, 49], "parmesao": [85, 85, 85, 95, 104, 110]}, "ficha": [["Massa fresca de ovos", "180 g", "180 g"], ["Molho bolonhesa", "260 g", "260 g"], ["Queijo muçarela", "180 g", "180 g"], ["Queijo parmesão", "35 g", "35 g"], ["Kit de embalagem (marmitex, tampa, sacola, talheres)", "", "1 un"]]};
+const fm = v => (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString('pt-BR');
+const fk = v => (v < 0 ? '-' : '') + (Math.abs(v) / 1000).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ' mil';
+const fr = v => 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const fp = v => ((v * 100) || 0).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + '%';
+const cls = v => v < 0 ? ' class="n neg"' : ' class="n"';
+const el = id => document.getElementById(id);
+
+// abas
+document.querySelectorAll('nav button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('nav button').forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('main section').forEach(s => s.hidden = s.id !== b.dataset.t);
+  try { history.replaceState(null, '', '#' + b.dataset.t); } catch (e) {}
+  window.scrollTo(0, 0);
+}));
+const ini = location.hash.slice(1);
+if (ini) { const b = document.querySelector('nav button[data-t="' + ini + '"]'); if (b) b.click(); }
+
+function kpis(id, lista) {
+  el(id).innerHTML = lista.map(k => `<div class="kpi"><div class="r">${k[0]}</div><div class="v">${k[1]}</div><div class="d ${k[3] || ''}">${k[2] || ''}</div></div>`).join('');
+}
+function tabela(id, meses, linhas, base) {
+  // base = receita de cada mês: com ela, cada mês ganha a coluna AV% (análise vertical)
+  let h = '<table><thead><tr><th>R$</th>' + meses.map(m => base ? `<th>${m}</th><th class="av">AV%</th>` : `<th>${m}</th>`).join('') + '</tr></thead><tbody>';
+  for (const [nome, vals, tipo] of linhas) {
+    h += `<tr class="${tipo || ''}"><td>${nome}</td>` + vals.map((v, i) =>
+      `<td${cls(v)}>${fm(v)}</td>` + (base ? `<td class="n av${v < 0 ? ' neg' : ''}">${base[i] && v ? fp(v / base[i]) : '-'}</td>` : '')).join('') + '</tr>';
+  }
+  el(id).innerHTML = h + '</tbody></table>';
+}
+
+// gráfico de barras (empilhadas) com linha opcional
+function barras(id, rotulos, series, linha, opt = {}) {
+  const W = 900, H = opt.h || 300, pl = 56, pr = 12, pt = 14, pb = 30;
+  const tot = rotulos.map((_, i) => opt.lado ? Math.max(...series.map(x => x.v[i])) : series.reduce((s, x) => s + (x.v[i] > 0 ? x.v[i] : 0), 0));
+  const vals = tot.concat(linha ? linha.v : []).concat([0]);
+  let max = Math.max(...vals), min = Math.min(...vals, 0);
+  const passo = opt.passo || 50000; max = Math.ceil(max / passo) * passo; min = Math.floor(min / passo) * passo;
+  const y = v => pt + (max - v) / (max - min) * (H - pt - pb);
+  const bw = (W - pl - pr) / rotulos.length;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img">`;
+  for (let v = min; v <= max; v += passo) {
+    s += `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="${v === 0 ? '#9aa8a9' : '#e8eded'}"/>`;
+    s += `<text x="${pl - 8}" y="${y(v) + 4}" text-anchor="end" font-size="12" fill="#6a787a" font-family="IBM Plex Sans Condensed">${fk(v)}</text>`;
+  }
+  rotulos.forEach((r, i) => {
+    let base = 0;
+    const x = pl + i * bw + bw * .18, w = bw * .64;
+    if (opt.lado) {
+      series.forEach((se, k) => { const v = se.v[i]; const wx = w / series.length;
+        s += `<rect x="${x + k * wx}" y="${y(Math.max(v, 0))}" width="${wx - 2}" height="${Math.abs(y(v) - y(0))}" rx="3" fill="${se.cor}"><title>${se.nome} ${r}: ${fm(v)}</title></rect>`; });
+    } else {
+      series.forEach(se => { const v = se.v[i]; if (!v) return;
+        s += `<rect x="${x}" y="${y(base + v)}" width="${w}" height="${y(base) - y(base + v)}" rx="3" fill="${se.cor}"><title>${se.nome} ${r}: ${fm(v)}</title></rect>`;
+        base += v; });
+    }
+    s += `<text x="${x + w / 2}" y="${H - 10}" text-anchor="middle" font-size="12" fill="#6a787a">${r}</text>`;
+  });
+  if (linha) {
+    const pts = linha.v.map((v, i) => `${pl + i * bw + bw / 2},${y(v)}`).join(' ');
+    s += `<polyline points="${pts}" fill="none" stroke="${linha.cor}" stroke-width="2.5"/>`;
+    linha.v.forEach((v, i) => s += `<circle cx="${pl + i * bw + bw / 2}" cy="${y(v)}" r="4" fill="${linha.cor}"><title>${linha.nome} ${rotulos[i]}: ${fm(v)}</title></circle>`);
+  }
+  el(id).innerHTML = s + '</svg>';
+}
+
+// ---------- Resultado ----------
+const M = D.dre.map(d => d.mes), dre = D.dre, a = dre[dre.length - 1], p0 = dre[0];
+kpis('kpiDre', [
+  ['Faturamento ago/26', fk(a.receita), `set/25: ${fk(p0.receita)} (+${fp(a.receita / p0.receita - 1)})`],
+  ['Lucro líquido ago/26', fk(a.lucro), `set/25: ${fk(p0.lucro)}`, 'mal'],
+  ['Margem líquida ago/26', fp(a.lucro / a.receita), `set/25: ${fp(p0.lucro / p0.receita)}`, 'mal'],
+  ['CMV ago/26', fp(a.cmv / a.receita), `set/25: ${fp(p0.cmv / p0.receita)}`],
+]);
+barras('gDre', M, [{nome: 'Salão', v: dre.map(d => d.salao), cor: '#0C4448'}, {nome: 'Delivery', v: dre.map(d => d.delivery), cor: '#e07b39'}],
+  {nome: 'Lucro líquido', v: dre.map(d => d.lucro), cor: '#1f2d2e'});
+const col = k => dre.map(d => d[k]), neg = k => dre.map(d => -d[k]);
+const linhasDre = [
+  ['Receita bruta', col('receita'), 'g'], ['Salão', col('salao'), 'f'], ['Delivery (iFood)', col('delivery'), 'f'],
+  ['(-) Custos variáveis', neg('var'), 'g'], ['Simples Nacional', neg('simples'), 'f'], ['CMV (insumos)', neg('cmv'), 'f'],
+  ['Embalagens do delivery', neg('embalagem'), 'f'], ['Comissão e taxas iFood', neg('ifood'), 'f'], ['Taxas de cartão', neg('cartao'), 'f'],
+  ['Margem de contribuição', col('mc'), 'r'],
+  ['(-) Despesas fixas', neg('fixas'), 'g'], ['Folha e encargos', neg('folha'), 'f'], ['Pró-labore', neg('prolabore'), 'f'],
+  ['Aluguel', neg('aluguel'), 'f'], ['Energia, gás e água', neg('energia'), 'f'], ['Marketing', neg('marketing'), 'f'],
+  ['Contabilidade, sistemas e outros', neg('outros'), 'f'], ['Manutenção', neg('manutencao'), 'f'],
+  ['EBITDA', col('ebitda'), 'r'], ['(-) Depreciação da reforma', neg('deprec'), 'f'], ['(-) Juros do empréstimo', neg('juros'), 'f'],
+  ['Lucro líquido', col('lucro'), 't'],
+];
+const chaveAv = el('chaveAv');
+const desenhaDre = () => tabela('tDre', M, linhasDre, chaveAv.checked ? dre.map(d => d.receita) : null);
+chaveAv.addEventListener('change', () => { desenhaDre(); try { localStorage.setItem('trattoria:av', chaveAv.checked ? '1' : '0'); } catch (e) {} });
+try { chaveAv.checked = localStorage.getItem('trattoria:av') === '1'; } catch (e) {}
+desenhaDre();
+
+// ---------- Caixa ----------
+const cx = D.caixa, cz = cx[cx.length - 1];
+const maxSaldo = Math.max(...cx.map(c => c.final));
+kpis('kpiCx', [
+  ['Saldo no banco em 31/08/26', fk(cz.final), `em 01/09/25: ${fk(cx[0].inicial)}, antes do empréstimo`, 'mal'],
+  ['Resultado de caixa ago/26', fk(cz.resultado), 'entradas menos saídas', cz.resultado < 0 ? 'mal' : ''],
+  ['Meses com caixa negativo', cx.filter(c => c.resultado < 0).length + ' de 12', 'todos desde dez/25'],
+]);
+barras('gCx', M, [{nome: 'Saldo final', v: cx.map(c => c.final), cor: '#0C4448'}], null, {passo: 50000});
+const sx = k => cx.map(c => -c.saidas[k]);
+tabela('tCx', M, [
+  ['Saldo inicial', cx.map(c => c.inicial), 'r'],
+  ['Entradas', cx.map(c => c.ent_salao + c.ent_ifood + c.emprestimo), 'g'],
+  ['Recebimentos do salão', cx.map(c => c.ent_salao), 'f'], ['Repasses do iFood', cx.map(c => c.ent_ifood), 'f'],
+  ['Empréstimo recebido', cx.map(c => c.emprestimo), 'f'],
+  ['Saídas', cx.map(c => -c.total_saidas), 'g'],
+  ['Fornecedores (insumos e embalagens)', sx('fornecedores'), 'f'], ['Simples Nacional', sx('simples'), 'f'], ['Folha e encargos', sx('folha'), 'f'],
+  ['Pró-labore', sx('prolabore'), 'f'], ['Aluguel', sx('aluguel'), 'f'], ['Energia, gás e água', sx('energia'), 'f'],
+  ['Marketing', sx('marketing'), 'f'], ['Contabilidade, manutenção e outros', sx('outros'), 'f'],
+  ['Reforma do salão', sx('reforma'), 'f'], ['Parcela do empréstimo', sx('parcela'), 'f'], ['Retirada dos sócios', sx('retirada'), 'f'],
+  ['Resultado do mês', cx.map(c => c.resultado), 'r'],
+  ['Saldo final', cx.map(c => c.final), 't'],
+]);
+
+// ---------- Orçado ----------
+const o = D.orc, MO = o.map(x => x.mes);
+barras('gOrc', MO, [{nome: 'Orçado', v: o.map(x => x.dlv[0]), cor: '#b9cfcc'}, {nome: 'Realizado', v: o.map(x => x.dlv[1]), cor: '#e07b39'}], null, {lado: true, passo: 20000, h: 260});
+{
+  const L = [['Faturamento', 'rec'], ['Delivery', 'dlv'], ['CMV (insumos)', 'cmv'], ['Folha e encargos', 'folha'], ['Lucro líquido', 'lucro']];
+  let h = '<table><thead><tr><th rowspan="2">Mês</th>' + L.map(l => `<th colspan="2" style="text-align:center">${l[0]}</th>`).join('') +
+    '</tr><tr>' + L.map(() => '<th>Orçado</th><th>Realizado</th>').join('') + '</tr></thead><tbody>';
+  for (const x of o) {
+    h += `<tr><td>${x.mes}</td>` + L.map(([, k]) => `<td class="n" style="color:var(--suave)">${fm(x[k][0])}</td><td${cls(x[k][1])}><b>${fm(x[k][1])}</b></td>`).join('') + '</tr>';
+  }
+  const soma = (k, j) => o.reduce((t, x) => t + x[k][j], 0);
+  h += '<tr class="t"><td>Jan a ago</td>' + L.map(([, k]) => `<td class="n">${fm(soma(k, 0))}</td><td class="n">${fm(soma(k, 1))}</td>`).join('') + '</tr>';
+  el('tOrc').innerHTML = h + '</tbody></table>';
+}
+
+// ---------- Custeio ----------
+const cu = D.custeio;
+kpis('kpiCu', [
+  ['Pratos com margem abaixo de 10%', cu.filter(c => c.mcp < .10).length, 'sobra quase nada por prato', 'mal'],
+  ['Muçarela em 6 meses', `+${fp(D.queijo.mucarela[5] / D.queijo.mucarela[0] - 1)}`, `R$ ${D.queijo.mucarela[0]} → R$ ${D.queijo.mucarela[5]} o kg`],
+  ['Parmesão em 6 meses', `+${fp(D.queijo.parmesao[5] / D.queijo.parmesao[0] - 1)}`, `R$ ${D.queijo.parmesao[0]} → R$ ${D.queijo.parmesao[5]} o kg`],
+]);
+{
+  let h = '<table><thead><tr><th>Prato</th><th style="text-align:left">Canal</th><th>Preço</th><th>Custo</th><th>Simples 8%</th><th>Taxa de venda</th><th>Margem R$</th><th>Margem %</th><th>CMV %</th><th></th></tr></thead><tbody>';
+  for (const c of cu) {
+    const pill = c.mcp < .10 ? '<span class="pill mal">quase zero</span>' : (c.mcp < .30 ? '<span class="pill at">baixa</span>' : '<span class="pill ok">ok</span>');
+    h += `<tr><td>${c.prato}</td><td style="text-align:left">${c.canal}${c.promo ? `<div class="promo">promoção -${Math.round(c.promo * 100)}%</div>` : ''}</td><td class="n">${fr(c.preco)}</td><td class="n">${fr(c.custo)}</td><td class="n">${fr(c.imposto)}</td><td class="n">${fr(c.taxa)}<div class="promo" style="color:var(--suave);font-weight:500">${c.canal === 'Salão' ? 'cartão 3%' : 'iFood 26,2%'}</div></td>
+      <td${cls(c.mc)}>${fr(c.mc)}</td><td${cls(c.mcp)}>${fp(c.mcp)}</td><td class="n">${fp(c.cmvp)}</td><td>${pill}</td></tr>`;
+  }
+  el('tCu').innerHTML = h + '</tbody></table>';
+}
+{ // queijo: linhas
+  const Q = D.queijo, W = 440, H = 220, pl = 40, pr = 10, pt = 12, pb = 26, max = 120;
+  const y = v => pt + (max - v) / max * (H - pt - pb), bw = (W - pl - pr) / Q.meses.length, x = i => pl + i * bw + bw / 2;
+  let s = `<svg viewBox="0 0 ${W} ${H}">`;
+  for (let v = 0; v <= max; v += 30) s += `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="#e8eded"/><text x="${pl - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#6a787a">${v}</text>`;
+  Q.meses.forEach((m, i) => s += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="#6a787a">${m}</text>`);
+  for (const [k, cor] of [['mucarela', '#0C4448'], ['parmesao', '#e07b39']]) {
+    s += `<polyline points="${Q[k].map((v, i) => x(i) + ',' + y(v)).join(' ')}" fill="none" stroke="${cor}" stroke-width="2.5"/>`;
+    Q[k].forEach((v, i) => s += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${cor}"><title>R$ ${v}/kg</title></circle>`);
+  }
+  el('gQj').innerHTML = s + '</svg>';
+}
+el('tFicha').innerHTML = '<thead><tr><th>Ingrediente</th><th>Salão</th><th>Delivery</th></tr></thead><tbody>' +
+  D.ficha.map(f => `<tr><td style="white-space:normal">${f[0]}</td><td class="n">${f[1] || '-'}</td><td class="n">${f[2]}</td></tr>`).join('') + '</tbody>';
+
+// aviso em janela: aparece uma vez por sessão do navegador; só fecha no botão
+(function () {
+  const av = el('zAviso'), ok = el('zAvisoOk'), CHAVE = 'trattoria:aviso-ok';
+  try { if (sessionStorage.getItem(CHAVE) === '1') return; } catch (e) {}
+  av.hidden = false; document.body.classList.add('travado'); ok.focus({ preventScroll: true, focusVisible: false });
+  ok.addEventListener('click', () => {
+    av.hidden = true; document.body.classList.remove('travado');
+    try { sessionStorage.setItem(CHAVE, '1'); } catch (e) {}
+  });
+  av.addEventListener('keydown', e => { if (e.key === 'Tab') { e.preventDefault(); ok.focus({ preventScroll: true, focusVisible: false }); } });
+})();
+</script>
+</body>
+</html>
