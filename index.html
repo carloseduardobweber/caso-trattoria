@@ -111,7 +111,15 @@ background:repeating-conic-gradient(from 0deg at 50% 50%,var(--acc) 0deg 9deg,tr
 @media (prefers-reduced-motion:reduce){.zfesta,.zfesta__box.is-pop,.zfesta__badge,.zfesta__rays::before{animation:none}.zfesta__badge::after{display:none}}
 @media (max-height:720px){.zfesta{align-items:flex-start;overflow-y:auto}.zfesta__box{margin:52px auto 20px;max-height:none}}
 body.travado{overflow:hidden}
-.opcoes{display:flex;justify-content:flex-end;margin:0 0 8px}
+.opcoes{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px;margin:0 0 8px}
+.opcoes .chave{margin-left:auto}
+.baixar{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;font-size:13px;color:var(--suave)}
+.baixar a{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--teal);background:var(--branco);border:1px solid var(--teal);border-radius:999px;padding:5px 13px;text-decoration:none;white-space:nowrap}
+.baixar a::before{content:"";width:14px;height:14px;flex:none;background:currentColor;
+-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.baixar a:hover{background:var(--teal-leve)}
+.baixar a:focus-visible{outline:3px solid #E9A21C;outline-offset:2px}
 .chave{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--teal);cursor:pointer;user-select:none}
 .chave .suave{font-weight:400;color:var(--suave);font-size:13px}
 .chave input{position:absolute;opacity:0;width:1px;height:1px}
@@ -124,7 +132,7 @@ th.av{background:var(--teal-claro);font-weight:500;font-size:12px}
 td.av{color:var(--suave);font-size:13px;background:rgba(231,241,239,.35)}
 td.av.neg{color:var(--vermelho)}
 tr.t td.av{color:#d6e6e3;background:var(--teal)}
-@media (max-width:760px){.opcoes{justify-content:flex-start}.chave .suave{display:none}}
+@media (max-width:760px){.opcoes{justify-content:flex-start}.opcoes .chave{margin-left:0}.chave .suave{display:none}}
 .promo{font-size:11.5px;color:var(--ambar);font-family:var(--fonte);font-weight:600}
 #tCu table{font-size:13.5px}#tCu th,#tCu td{padding-left:8px;padding-right:8px}
 footer{max-width:1120px;margin:0 auto;padding:0 16px 30px;color:var(--suave);font-size:12px}
@@ -189,6 +197,14 @@ footer{max-width:1120px;margin:0 auto;padding:0 16px 30px;color:var(--suave);fon
     <tr><td>jun a ago/26</td><td>O queijo subiu bastante. O cardápio não mudou.</td></tr>
   </tbody></table></div>
   <p class="dica">Todos os números desta página são fictícios.</p>
+
+  <h2>Dados para análise</h2>
+  <div class="card">
+    <p>Quer montar suas próprias tabelas e gráficos? Baixe os lançamentos financeiros que formam os números do DRE e do
+    fluxo de caixa: as vendas de cada dia, as compras de cada fornecedor, a folha, os impostos e as parcelas, com data de
+    competência e de pagamento.</p>
+    <div class="baixar"><a href="dados/trattoria-lancamentos.xlsx" download>Excel (.xlsx)</a><a href="dados/trattoria-lancamentos.csv" download>CSV</a></div>
+  </div>
 </section>
 
 <!-- ============ RESULTADO ============ -->
@@ -198,7 +214,8 @@ footer{max-width:1120px;margin:0 auto;padding:0 16px 30px;color:var(--suave);fon
   <div class="kpis" id="kpiDre"></div>
   <div class="grafico"><div class="tit">Faturamento por canal e lucro líquido, mês a mês</div><div id="gDre"></div>
     <div class="leg"><span><i style="background:var(--teal)"></i>Salão</span><span><i style="background:var(--laranja)"></i>Delivery</span><span><i style="background:#1f2d2e"></i>Lucro líquido</span></div></div>
-  <div class="opcoes"><label class="chave"><input type="checkbox" id="chaveAv"><span class="trilho"></span>Análise vertical <span class="suave">(% de cada linha sobre a receita bruta do mês)</span></label></div>
+  <div class="opcoes"><div class="baixar"><span>Lançamentos que formam estes números:</span><a href="dados/trattoria-lancamentos.xlsx" download>Excel</a><a href="dados/trattoria-lancamentos.csv" download>CSV</a></div>
+    <label class="chave"><input type="checkbox" id="chaveAv"><span class="trilho"></span>Análise vertical <span class="suave">(% de cada linha sobre a receita bruta do mês)</span></label></div>
   <div class="tabela fixa" id="tDre"></div>
 </section>
 
@@ -208,6 +225,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 16px 30px;color:var(--suave);fon
   <p class="sub">Regime de caixa: o que entrou e saiu da conta do banco em cada mês.</p>
   <div class="kpis" id="kpiCx"></div>
   <div class="grafico"><div class="tit">Saldo no banco no fim de cada mês</div><div id="gCx"></div></div>
+  <div class="opcoes"><div class="baixar"><span>Lançamentos que formam estes números:</span><a href="dados/trattoria-lancamentos.xlsx" download>Excel</a><a href="dados/trattoria-lancamentos.csv" download>CSV</a></div></div>
   <div class="tabela fixa" id="tCx"></div>
   <p class="dica">Cartão de crédito cai em 30 dias; o iFood repassa no mês seguinte, já sem a comissão. Simples, folha e fornecedores são pagos no mês seguinte.</p>
 </section>
